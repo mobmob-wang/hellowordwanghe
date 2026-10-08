@@ -1,0 +1,24 @@
+{
+  "name": "hello-world",
+  "version": "1.0.0",
+  "description": "我的第一个AI开发的Node.js网站：Hello World + 服务器时间",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "hello-world",
+    "vercel"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

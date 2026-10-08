@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello World - 我的第一个AI开发的网站</title>
+  <style>
+    /* 全局样式：简洁清爽的居中布局 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Microsoft YaHei", sans-serif;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+      border-radius: 20px;
+      padding: 48px 56px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+      max-width: 560px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 48px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+
+    p {
+      font-size: 20px;
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    .time-box {
+      margin-top: 24px;
+      padding: 16px 20px;
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 12px;
+      font-size: 18px;
+    }
+
+    .time-box span {
+      font-weight: 700;
+      color: #ffe66d;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <!-- 主标题 -->
+    <h1>Hello World！</h1>
+
+    <!-- 自我介绍（把【你的名字】改成你自己的名字） -->
+    <p>我是【你的名字】，我的第一个AI开发的网站</p>
+
+    <!-- 服务器时间显示区 -->
+    <div class="time-box">
+      当前服务器时间：<span id="serverTime">加载中…</span>
+    </div>
+  </div>
+
+  <script>
+    // 通过 fetch 调用后端 /api/time 接口，获取服务器当前时间
+    async function loadServerTime() {
+      try {
+        const res = await fetch('/api/time');
+        const data = await res.json();
+        document.getElementById('serverTime').textContent = data.time;
+      } catch (err) {
+        document.getElementById('serverTime').textContent = '获取服务器时间失败';
+      }
+    }
+
+    // 页面加载完成后立即获取时间，并每秒刷新一次，保持实时
+    loadServerTime();
+    setInterval(loadServerTime, 1000);
+  </script>
+</body>
+</html>
